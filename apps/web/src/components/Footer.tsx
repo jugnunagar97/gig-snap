@@ -1,42 +1,66 @@
+"use client";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div>
-            <div className="text-sm text-neutral-700 dark:text-neutral-300">Free signup — No credit card required</div>
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-3">Company</div>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="#about" className="hover:underline">About</Link></li>
-              <li><Link href="#contact" className="hover:underline">Contact</Link></li>
-              <li><Link href="#blog" className="hover:underline">Blog</Link></li>
-              <li><Link href="#careers" className="hover:underline">Careers</Link></li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-3">Legal</div>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="#privacy" className="hover:underline">Privacy Policy</Link></li>
-              <li><Link href="#terms" className="hover:underline">Terms of Service</Link></li>
-              <li><Link href="#cookies" className="hover:underline">Cookies</Link></li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-3">Follow</div>
-            <div className="flex items-center gap-4 text-neutral-600 dark:text-neutral-300">
-              <Link href="#x" aria-label="X / Twitter" className="hover:text-black dark:hover:text-white">X</Link>
-              <Link href="#linkedin" aria-label="LinkedIn" className="hover:text-black dark:hover:text-white">LinkedIn</Link>
-              <a href="#top" className="ml-auto text-sm px-3 py-1 rounded-full border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800">Back to Top</a>
+    <footer className="relative mt-6 border-t border-gray-200 bg-white">
+      {/* Ambient accents */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full blur-3xl bg-emerald-200/30" />
+        <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full blur-3xl bg-cyan-200/25" />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="py-6 grid gap-8 md:grid-cols-4">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 shadow-lg flex items-center justify-center text-white font-bold">G</div>
+              <div className="text-2xl font-bold tracking-tight text-gray-900">GigSnap</div>
+            </div>
+            <p className="mt-3 text-sm text-gray-600 max-w-md">Delegate micro‑tasks with confidence. Fixed‑scope quotes, QA on every delivery, and overnight turnarounds from certified assistants.</p>
+
+            {/* Certifications */}
+            <div className="mt-6 space-y-3">
+              <div className="text-xs font-semibold text-gray-900">Certifications</div>
+              <div className="flex items-center gap-4">
+                <Image src="/certified.png" alt="GigSnap certified" width={192} height={192} className="h-16 w-auto object-contain" />
+              </div>
             </div>
           </div>
+
+          {/* Links */}
+          <div>
+            <div className="text-sm font-semibold text-gray-900">Company</div>
+            <ul className="mt-3 space-y-2 text-sm text-gray-600">
+              <li><Link href="#about-company" className="hover:text-gray-900">The Company</Link></li>
+              <li><Link href="#our-team" className="hover:text-gray-900">Our Team</Link></li>
+              <li><Link href="#blog" className="hover:text-gray-900">Blog</Link></li>
+              <li><Link href="#contact" className="hover:text-gray-900">Contact Us</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="text-sm font-semibold text-gray-900">Product</div>
+            <ul className="mt-3 space-y-2 text-sm text-gray-600">
+              <li><Link href="#services" className="hover:text-gray-900">Services</Link></li>
+              <li><Link href="#how-it-works" className="hover:text-gray-900">How it works</Link></li>
+              <li><Link href="#tools" className="hover:text-gray-900">Tools</Link></li>
+              <li><Link href="#pricing" className="hover:text-gray-900">Pricing (Quote)</Link></li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500">
-          <div>© 2025 GigSnap • All Rights Reserved</div>
-          <div className="mt-2 sm:mt-0">www.GigSnap.work.gd</div>
+
+        <div className="py-2 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="text-xs text-gray-500">© {new Date().getFullYear()} GigSnap. All rights reserved.</div>
+          <div className="flex items-center gap-3 text-xs text-gray-500">
+            <Link href="#" className="hover:text-gray-900">Privacy</Link>
+            <span>•</span>
+            <Link href="#" className="hover:text-gray-900">Terms</Link>
+            <span>•</span>
+            <Link href="#post-gig" className="px-3 py-1 rounded-lg border border-gray-200 bg-white text-gray-900 hover:bg-emerald-50 transition">Post a gig</Link>
+          </div>
         </div>
       </div>
     </footer>
