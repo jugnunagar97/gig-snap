@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
+import { useOrderModal } from "@/components/OrderModalContext";
 
 export default function Header() {
+  const { open } = useOrderModal();
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100/50 shadow-sm">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -241,12 +243,12 @@ export default function Header() {
 
           {/* Action Buttons */}
           <div className="flex items-center space-x-4">
-            <Link 
-              href="#post-gig" 
+            <button
+              onClick={open}
               className="px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 tracking-wide"
             >
               Post Gig
-              </Link>
+            </button>
             </div>
 
           {/* Mobile menu button */}

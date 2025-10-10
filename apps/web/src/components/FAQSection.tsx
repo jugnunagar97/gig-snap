@@ -91,7 +91,9 @@ export default function FAQSection() {
                   <div
                     id={`faq-panel-${idx}`}
                     role="region"
-                    ref={el => (panelRefs.current[idx] = el)}
+                    ref={(el) => {
+                      panelRefs.current[idx] = el;
+                    }}
                     aria-hidden={!isOpen}
                     className={`px-5 overflow-hidden ${isOpen ? 'pt-1 pb-5' : 'pt-0 pb-0'}`}
                     style={{ maxHeight: isOpen ? `${heights[idx] || 0}px` : '0px', transition: 'max-height 320ms ease' }}
