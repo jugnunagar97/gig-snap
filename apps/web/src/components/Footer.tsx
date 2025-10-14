@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Playfair_Display } from "next/font/google";
+
+const brandFont = Playfair_Display({ subsets: ["latin"], weight: ["700","800"] });
 
 export default function Footer() {
   return (
@@ -17,7 +20,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 group">
               <Image src="/tp-logo.png" alt="Task Partner" width={80} height={80} className="object-contain" />
-              <div className="text-2xl font-bold tracking-tight text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">Task Partner</div>
+              <div className={`${brandFont.className} text-2xl sm:text-3xl font-extrabold leading-none tracking-[-0.02em] bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 group-hover:from-emerald-600 group-hover:via-emerald-600 group-hover:to-teal-600 transition-[background] duration-300 [text-rendering:optimizeLegibility] antialiased drop-shadow-sm`}>Task Partner</div>
             </Link>
             <p className="mt-3 text-sm text-gray-600 max-w-md">Delegate micro‑tasks with confidence. Fixed‑scope quotes, QA on every delivery, and overnight turnarounds from certified assistants.</p>
 

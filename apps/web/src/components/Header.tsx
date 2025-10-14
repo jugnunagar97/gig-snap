@@ -1,10 +1,15 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
 import { useOrderModal } from "@/components/OrderModalContext";
+import { useAuth } from "@/components/AuthContext";
+
+const brandFont = Playfair_Display({ subsets: ["latin"], weight: ["700","800"] });
 
 export default function Header() {
   const { open } = useOrderModal();
+  const { isAuthenticated, isReady } = useAuth();
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100/50 shadow-sm">
       <div className="mx-auto max-w-7xl px-6 sm:px-10">
@@ -13,10 +18,10 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-3 group">
               <Image src="/tp-logo.png" alt="Task Partner" width={85} height={85} className="object-contain" priority />
-              <span className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight group-hover:text-emerald-600 transition-colors duration-300">
+              <span className={`${brandFont.className} text-xl sm:text-2xl font-extrabold leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 group-hover:from-emerald-600 group-hover:via-emerald-600 group-hover:to-teal-600 transition-[background] duration-300 [text-rendering:optimizeLegibility] antialiased drop-shadow-sm`}>
                 Task Partner
               </span>
-            </Link>
+          </Link>
           </div>
 
           {/* Navigation */}
@@ -241,12 +246,24 @@ export default function Header() {
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
+            {isReady && !isAuthenticated && (
+              <Link
+                href="/auth/login"
+                className="px-4 py-2 text-sm font-semibold text-gray-700 rounded-lg border border-gray-200 bg-white hover:text-emerald-600 hover:border-emerald-200 hover:bg-emerald-50/40 transition-colors duration-200 shadow-sm"
+              >
+                Log In
+              </Link>
+            )}
             <button
               onClick={open}
-              className="px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 tracking-wide"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg transition-all duration-200"
             >
-              Post Gig
+              <span>Post Gig</span>
+              <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" />
+                <path d="M13 5l7 7-7 7" />
+              </svg>
             </button>
             </div>
 

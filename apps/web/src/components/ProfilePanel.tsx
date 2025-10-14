@@ -1,8 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "@/components/AuthContext";
 
 export default function ProfilePanel() {
+  const { user } = useAuth();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    setName(user?.name || "");
+    setEmail(user?.email || "");
+  }, [user]);
   return (
     <div>
       <div className="mb-5">
@@ -16,7 +24,8 @@ export default function ProfilePanel() {
             <label className="block mb-1.5 font-semibold text-gray-700">Full Name</label>
             <input
               type="text"
-              defaultValue="Aman Kumar"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
               className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
             />
           </div>
@@ -24,7 +33,8 @@ export default function ProfilePanel() {
             <label className="block mb-1.5 font-semibold text-gray-700">Email Address</label>
             <input
               type="email"
-              defaultValue="amankumar@gmail.com"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
               className="w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none"
             />
           </div>
