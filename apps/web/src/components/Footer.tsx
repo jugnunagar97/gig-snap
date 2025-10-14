@@ -15,17 +15,17 @@ export default function Footer() {
         <div className="py-6 grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 shadow-lg flex items-center justify-center text-white font-bold">G</div>
-              <div className="text-2xl font-bold tracking-tight text-gray-900">GigSnap</div>
-            </div>
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image src="/tp-logo.png" alt="Task Partner" width={80} height={80} className="object-contain" />
+              <div className="text-2xl font-bold tracking-tight text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">Task Partner</div>
+            </Link>
             <p className="mt-3 text-sm text-gray-600 max-w-md">Delegate micro‑tasks with confidence. Fixed‑scope quotes, QA on every delivery, and overnight turnarounds from certified assistants.</p>
 
             {/* Certifications */}
             <div className="mt-6 space-y-3">
               <div className="text-xs font-semibold text-gray-900">Certifications</div>
               <div className="flex items-center gap-4">
-                <Image src="/certified.png" alt="GigSnap certified" width={192} height={192} className="h-16 w-auto object-contain" />
+                <Image src="/certified.png" alt="Task Partner certified" width={192} height={192} className="h-16 w-auto object-contain" />
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
 
         <div className="py-2 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-3">
-          <div className="text-xs text-gray-500">© {new Date().getFullYear()} GigSnap. All rights reserved.</div>
+          <div className="text-xs text-gray-500">© {new Date().getFullYear()} Task Partner. All rights reserved.</div>
           <div className="flex items-center gap-3 text-xs text-gray-500">
             <Link href="#" className="hover:text-gray-900">Privacy</Link>
             <span>•</span>

@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
   const jsonLd = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Product",
-    name: "GigSnap Micro-task Services",
+    name: "Task Partner Micro-task Services",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: aggregateRating.ratingValue,

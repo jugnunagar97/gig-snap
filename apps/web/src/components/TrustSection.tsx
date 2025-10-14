@@ -45,7 +45,7 @@ const TrustSection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            Why teams trust GigSnap
+            Why teams trust Task Partner
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Proven, reliable, accountable</h2>
           <p className="mt-4 text-lg text-gray-600">Transparent delivery, audited quality checks and battle‑tested playbooks—so you can delegate with confidence.</p>

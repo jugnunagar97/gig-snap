@@ -109,7 +109,7 @@ const ToolsSection: React.FC = () => {
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            GigSnap • Tooling
+            Task Partner • Tooling
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Tools & Platforms We Master</h2>
           <p className="mt-4 text-lg text-gray-600">

@@ -115,7 +115,7 @@ export default function About() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">The Company</h3>
                   <p className="text-gray-600 text-base leading-relaxed font-light">
                     Founded with a vision to bridge the gap between global businesses and Indian talent, 
-                    GigSnap has become the go-to platform for reliable micro-task outsourcing.
+                    Task Partner has become the go-to platform for reliable micro-task outsourcing.
                   </p>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Why GigSnap - Slides from bottom */}
+              {/* Why Task Partner - Slides from bottom */}
               <div 
                 className={`transform transition-all duration-700 ease-out ${
                   isSecondRowVisible 
@@ -196,7 +196,7 @@ export default function About() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">Why GigSnap</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3 tracking-tight">Why Task Partner</h3>
                   <p className="text-gray-600 text-base leading-relaxed font-light">
                     We combine India's skilled talent pool with time zone advantages to deliver 
                     fast, reliable, and cost-effective micro-task solutions.

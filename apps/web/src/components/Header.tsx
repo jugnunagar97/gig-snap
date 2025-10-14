@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useOrderModal } from "@/components/OrderModalContext";
 
 export default function Header() {
@@ -11,13 +12,11 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-emerald-500/25 transition-all duration-300 group-hover:scale-105">
-                <span className="text-white font-bold text-lg tracking-tight">G</span>
-              </div>
-              <span className="text-2xl font-bold text-gray-900 tracking-tight group-hover:text-emerald-600 transition-colors duration-300">
-                GigSnap
+              <Image src="/tp-logo.png" alt="Task Partner" width={85} height={85} className="object-contain" priority />
+              <span className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight group-hover:text-emerald-600 transition-colors duration-300">
+                Task Partner
               </span>
-          </Link>
+            </Link>
           </div>
 
           {/* Navigation */}

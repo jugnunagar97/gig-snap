@@ -28,29 +28,13 @@ export default function OrderModalProvider({ children }: { children: ReactNode }
       {children}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
           aria-modal
           role="dialog"
         >
-          <button
-            aria-label="Close order modal"
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={close}
-          />
-          <div className="relative w-full max-w-5xl">
-            <button
-              onClick={close}
-              className="absolute -top-3 -right-3 z-[101] rounded-full bg-white text-gray-700 shadow p-2 leading-none hover:bg-gray-50"
-              aria-label="Close"
-            >
-              ✕
-            </button>
-            <OrderContent />
-          </div>
+          <OrderContent />
         </div>
       )}
     </OrderModalContext.Provider>
   );
 }
-
-

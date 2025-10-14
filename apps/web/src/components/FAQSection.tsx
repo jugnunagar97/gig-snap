@@ -5,7 +5,7 @@ type QA = { q: string; a: string };
 
 const FAQS: QA[] = [
   {
-    q: "How does GigSnap pricing work?",
+    q: "How does Task Partner pricing work?",
     a: "You post a gig with context and deadline. We respond quickly with a fixed quote, scope and ETA—no platform markups or hidden fees.",
   },
   {
@@ -60,7 +60,7 @@ export default function FAQSection() {
             FAQs
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Questions, answered</h2>
-          <p className="mt-4 text-lg text-gray-600">Everything you need to know about delegating micro‑tasks with GigSnap.</p>
+          <p className="mt-4 text-lg text-gray-600">Everything you need to know about delegating micro‑tasks with Task Partner.</p>
         </div>
 
         {/* Two-column responsive accordion with premium borders */}

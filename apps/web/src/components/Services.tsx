@@ -97,7 +97,7 @@ const Services: React.FC = () => {
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-full px-3 py-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            GigSnap • Services
+            Task Partner • Services
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
             Built for Your Workflow
