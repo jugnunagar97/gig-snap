@@ -40,12 +40,12 @@ type UrgencyOption = {
   color: "emerald" | "cyan" | "orange";
 };
 
-export default function OrderForm() {
+export default function OrderForm({ initialTier, initialCategory }: { initialTier?: "starter" | "professional" | "enterprise"; initialCategory?: string }) {
   const { close } = useOrderModal();
   const [page, setPage] = useState<number>(1);
-  const [selectedTier, setSelectedTier] = useState<TierKey>("professional");
+  const [selectedTier, setSelectedTier] = useState<TierKey>((initialTier as TierKey) || "professional");
   const [formData, setFormData] = useState({
-    category: "",
+    category: initialCategory || "",
     service: "",
     urgency: "standard" as UrgencyKey,
     quantity: 1,

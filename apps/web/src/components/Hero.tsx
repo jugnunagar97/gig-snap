@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 
+import { useOrderModal } from "@/components/OrderModalContext";
+
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const { open } = useOrderModal();
 
   useEffect(() => {
     setIsVisible(true);
@@ -52,12 +55,12 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
-            <button className="group relative px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 text-lg tracking-wide">
+            <button onClick={() => open({ tier: "professional" })} className="group relative px-10 py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 text-lg tracking-wide">
               <span className="relative z-10">Get Your Virtual Pro Now</span>
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
             
-            <button className="px-10 py-5 border-2 border-white/40 text-white font-semibold rounded-xl hover:border-white/60 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-lg tracking-wide">
+            <button onClick={() => open()} className="px-10 py-5 border-2 border-white/40 text-white font-semibold rounded-xl hover:border-white/60 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm text-lg tracking-wide">
               See Success Stories
             </button>
           </div>

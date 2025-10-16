@@ -4,9 +4,11 @@ import React, { createContext, useContext, useState, useCallback, ReactNode } fr
 import OrderContent from "@/components/OrderContent";
 
 type OrderModalContextValue = {
-  open: () => void;
+  open: (opts?: { tier?: "starter" | "professional" | "enterprise"; category?: string }) => void;
   close: () => void;
   isOpen: boolean;
+  initialTier?: "starter" | "professional" | "enterprise";
+  initialCategory?: string;
 };
 
 const OrderModalContext = createContext<OrderModalContextValue | undefined>(undefined);
@@ -19,12 +21,18 @@ export function useOrderModal(): OrderModalContextValue {
 
 export default function OrderModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [initialTier, setInitialTier] = useState<"starter" | "professional" | "enterprise" | undefined>(undefined);
+  const [initialCategory, setInitialCategory] = useState<string | undefined>(undefined);
 
-  const open = useCallback(() => setIsOpen(true), []);
+  const open = useCallback((opts?: { tier?: "starter" | "professional" | "enterprise"; category?: string }) => {
+    if (opts?.tier) setInitialTier(opts.tier);
+    if (opts?.category) setInitialCategory(opts.category);
+    setIsOpen(true);
+  }, []);
   const close = useCallback(() => setIsOpen(false), []);
 
   return (
-    <OrderModalContext.Provider value={{ open, close, isOpen }}>
+    <OrderModalContext.Provider value={{ open, close, isOpen, initialTier, initialCategory }}>
       {children}
       {isOpen && (
         <div

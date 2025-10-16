@@ -174,7 +174,7 @@ export default function Header() {
                           <p className="text-gray-600 text-sm">Let our virtual professionals handle your tasks.</p>
                         </div>
                         <div className="ml-4">
-                          <button className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-md hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-sm hover:shadow-md text-sm">
+                          <button onClick={() => open()} className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-md hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-sm hover:shadow-md text-sm">
                             Get Started
                           </button>
                         </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
+import { useOrderModal } from '@/components/OrderModalContext';
 import { CheckIcon, AdminSupportIcon, DigitalMarketingIcon, ECommerceIcon, ResearchAnalysisIcon } from '@/components/Icons';
 
 // Local types and data to remove missing module errors and keep content SEO‑friendly
@@ -70,6 +71,7 @@ const Services: React.FC = () => {
   const [highlighterStyle, setHighlighterStyle] = useState({});
   const navContainerRef = useRef<HTMLDivElement>(null);
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const { open } = useOrderModal();
 
   useEffect(() => {
     const selectedIndex = SERVICE_MENU.findIndex(s => s.category === selectedCategory.category);
@@ -159,10 +161,10 @@ const Services: React.FC = () => {
                 </div>
               </div>
               <div className="mt-6">
-                <a href="#get-started" className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all">
+                <button onClick={() => open({ category: selectedCategory.category, tier: "professional" })} className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all">
                   Get started
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                </a>
+                </button>
               </div>
             </div>
           </div>

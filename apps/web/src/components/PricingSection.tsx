@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useOrderModal } from "@/components/OrderModalContext";
 
 const PLANS = [
   {
@@ -9,7 +10,6 @@ const PLANS = [
     desc: "Great for simple, one‑off gigs. Vetted VAs with standard delivery.",
     features: ["Vetted VAs", "Basic support", "24–48h delivery"],
     highlight: false,
-    cta: "Get quote",
   },
   {
     name: "Professional",
@@ -18,7 +18,6 @@ const PLANS = [
     desc: "Our recommended tier for most gigs: higher quality and faster turnaround.",
     features: ["Premium VAs", "Priority support", "Quality review", "12–24h delivery"],
     highlight: true,
-    cta: "Get quote",
   },
   {
     name: "Enterprise",
@@ -27,12 +26,12 @@ const PLANS = [
     desc: "For complex or ongoing work. Dedicated manager and double QA review.",
     features: ["Top 1% VAs", "Dedicated manager", "Double QA review", "Same‑day delivery"],
     highlight: false,
-    cta: "Talk to us",
   },
 ];
 
 export default function PricingSection() {
   const [reveal, setReveal] = useState(false);
+  const { open } = useOrderModal();
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
@@ -54,8 +53,8 @@ export default function PricingSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             Three‑tier system
           </span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Flexible tiers for every gig</h2>
-          <p className="mt-4 text-lg text-gray-600">Choose the tier that fits your scope, speed and quality needs. Every plan is quote‑based—no hidden markups.</p>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Choose your delivery style</h2>
+          <p className="mt-4 text-lg text-gray-600">Pick a tier to shape speed, QA and collaboration. You’ll configure the task on the next step—no vague "quotes" here.</p>
         </div>
 
         <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -77,7 +76,13 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <a href="#post-gig" className={`mt-6 inline-flex items-center gap-2 w-full justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all`}>{p.cta || 'Get quote'}</a>
+                <button
+                  onClick={() => open({ tier: p.name.toLowerCase() as "starter" | "professional" | "enterprise" })}
+                  className={`mt-6 inline-flex items-center gap-2 w-full justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all`}
+                >
+                  Start with {p.name}
+                </button>
+                <a href="/order" className="mt-3 block text-center text-xs font-semibold text-emerald-700 hover:text-emerald-800">Prefer full customization? Go to order page →</a>
               </div>
             </div>
           ))}

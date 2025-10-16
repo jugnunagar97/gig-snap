@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useOrderModal } from "@/components/OrderModalContext";
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -82,7 +83,7 @@ export default function About() {
             </div>
 
             <div className="pt-2">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 text-base tracking-wide">
+              <button onClick={() => open()} className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 text-base tracking-wide">
                 <span className="relative z-10">Get Your Free Consultation</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>

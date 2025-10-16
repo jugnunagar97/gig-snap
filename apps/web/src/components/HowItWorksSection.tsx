@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useOrderModal } from "@/components/OrderModalContext";
 
 const STEPS = [
   {
@@ -31,6 +32,7 @@ const STEPS = [
 export default function HowItWorksSection() {
   const [revealed, setRevealed] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const { open } = useOrderModal();
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       if (entries.some(e => e.isIntersecting)) setRevealed(true);
@@ -80,13 +82,13 @@ export default function HowItWorksSection() {
         </div>
 
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="#post-gig" className="gs-btn gs-gradient inline-flex items-center gap-2">
+          <button onClick={() => open()} className="gs-btn gs-gradient inline-flex items-center gap-2">
             Post a gig now
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-          </a>
-          <a href="#contact" className="gs-btn inline-flex items-center gap-2 border border-gray-200 rounded-xl px-5 py-3 font-semibold text-gray-900">
+          </button>
+          <button onClick={() => open()} className="gs-btn inline-flex items-center gap-2 border border-gray-200 rounded-xl px-5 py-3 font-semibold text-gray-900">
             Talk to us
-          </a>
+          </button>
         </div>
       </div>
     </section>
