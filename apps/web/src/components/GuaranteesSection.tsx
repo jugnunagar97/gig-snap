@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useOrderModal } from "@/components/OrderModalContext";
 
 const GUARANTEES = [
   {
@@ -35,6 +36,7 @@ const GUARANTEES = [
 export default function GuaranteesSection() {
   const [reveal, setReveal] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const { open } = useOrderModal();
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) setReveal(true);
@@ -44,7 +46,7 @@ export default function GuaranteesSection() {
   }, []);
 
   return (
-    <section ref={ref} id="guarantees" className="relative py-24 bg-white">
+    <section ref={ref} id="guarantees" className="relative py-12 bg-white">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full blur-3xl bg-emerald-200/35" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl bg-cyan-200/30" />
@@ -74,10 +76,10 @@ export default function GuaranteesSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <a href="#post-gig" className="gs-btn gs-gradient inline-flex items-center gap-2">
+          <button onClick={() => open()} className="gs-btn gs-gradient inline-flex items-center gap-2">
             Post a gig for a fast quote
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-          </a>
+          </button>
         </div>
       </div>
     </section>

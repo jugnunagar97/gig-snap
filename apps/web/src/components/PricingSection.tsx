@@ -42,7 +42,7 @@ export default function PricingSection() {
   }, []);
 
   return (
-    <section ref={ref} id="pricing" className="relative py-24 bg-white">
+    <section ref={ref} id="pricing" className="relative py-12 bg-white">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full blur-3xl bg-emerald-200/35" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl bg-cyan-200/30" />
@@ -57,10 +57,10 @@ export default function PricingSection() {
           <p className="mt-4 text-lg text-gray-600">Pick a tier to shape speed, QA and collaboration. You’ll configure the task on the next step—no vague "quotes" here.</p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {PLANS.map((p, i) => (
             <div key={p.name} className={`group relative rounded-3xl border ${p.highlight ? 'border-transparent bg-gradient-to-br from-emerald-400 to-cyan-400 p-[1px]' : 'border-gray-200'} ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} transition-all`} style={{ transitionDuration: '600ms', transitionDelay: `${i * 120}ms` }}>
-              <div className="rounded-3xl bg-white p-6 h-full">
+              <div className="rounded-3xl bg-white p-4 sm:p-6 h-full">
                 {p.highlight && <div className="absolute -top-3 right-6 text-xs font-semibold px-2 py-0.5 rounded-full bg-black text-white">Most popular</div>}
                 <div className="flex items-center justify-between">
                 <div className="text-sm font-semibold text-emerald-700">{p.name}</div>
@@ -78,11 +78,11 @@ export default function PricingSection() {
                 </ul>
                 <button
                   onClick={() => open({ tier: p.name.toLowerCase() as "starter" | "professional" | "enterprise" })}
-                  className={`mt-6 inline-flex items-center gap-2 w-full justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all`}
+                  className={`mt-4 sm:mt-6 inline-flex items-center gap-2 w-full justify-center rounded-xl px-4 sm:px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-sm transition-all touch-manipulation`}
                 >
                   Start with {p.name}
                 </button>
-                <a href="/order" className="mt-3 block text-center text-xs font-semibold text-emerald-700 hover:text-emerald-800">Prefer full customization? Go to order page →</a>
+                <a href="/order" className="mt-2 sm:mt-3 block text-center text-xs font-semibold text-emerald-700 hover:text-emerald-800">Prefer full customization? Go to order page →</a>
               </div>
             </div>
           ))}

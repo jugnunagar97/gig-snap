@@ -89,7 +89,7 @@ const Services: React.FC = () => {
   }, [selectedCategory]);
 
   return (
-    <section id="services" className="relative py-20 md:py-28 bg-white">
+    <section id="services" className="relative py-12 bg-white">
       {/* Ambient gradient */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full blur-3xl bg-emerald-200/35" />

@@ -242,3 +242,67 @@ body {
     opacity: 1;
   }
 }
+
+/* Mobile-first responsive utilities */
+@media (max-width: 475px) {
+  .xs\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+  .xs\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .xs\:py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .xs\:inline { display: inline; }
+  .xs\:hidden { display: none; }
+}
+
+/* Touch-friendly interactions */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile-optimized spacing */
+@media (max-width: 640px) {
+  .mobile-px { padding-left: 1rem; padding-right: 1rem; }
+  .mobile-py { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+}
+
+/* Improved mobile scrolling */
+@media (max-width: 1024px) {
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Mobile-optimized buttons */
+@media (max-width: 640px) {
+  .mobile-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Responsive typography scaling */
+@media (max-width: 320px) {
+  .text-3xl { font-size: 1.75rem; line-height: 2.25rem; }
+  .text-4xl { font-size: 2rem; line-height: 2.5rem; }
+  .text-5xl { font-size: 2.25rem; line-height: 2.75rem; }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 1024px) {
+  .mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+  }
+}

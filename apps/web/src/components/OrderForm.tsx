@@ -44,8 +44,17 @@ export default function OrderForm({ initialTier, initialCategory }: { initialTie
   const { close } = useOrderModal();
   const [page, setPage] = useState<number>(1);
   const [selectedTier, setSelectedTier] = useState<TierKey>((initialTier as TierKey) || "professional");
+
+  // Category mapping from Services component to OrderForm keys
+  const categoryMapping: Record<string, string> = {
+    "Administrative & Executive Support": "Administrative Support",
+    "Digital Marketing & Social Media": "Social Media & Marketing", 
+    "E‑commerce & Online Store Ops": "E-commerce Support",
+    "Research & Analysis": "Research & Analysis"
+  };
+
   const [formData, setFormData] = useState({
-    category: initialCategory || "",
+    category: initialCategory ? (categoryMapping[initialCategory] || initialCategory) : "",
     service: "",
     urgency: "standard" as UrgencyKey,
     quantity: 1,
@@ -579,7 +588,7 @@ export default function OrderForm({ initialTier, initialCategory }: { initialTie
                       className="w-full px-4 py-2.5 bg-white text-sm text-gray-900 border border-gray-200 rounded-lg appearance-none cursor-pointer focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 focus:outline-none transition-all font-medium"
                     >
                       <option value="">Select service...</option>
-                      {services[formData.category].map((service) => (
+                      {services[categoryMapping[formData.category] || formData.category]?.map((service) => (
                         <option key={service.name} value={service.name}>
                           {service.name}
                         </option>

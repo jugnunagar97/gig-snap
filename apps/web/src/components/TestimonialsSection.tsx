@@ -106,7 +106,7 @@ export default function TestimonialsSection() {
   }, [pages.length]);
 
   return (
-    <section ref={sectionRef} id="testimonials" className="relative py-24 bg-white">
+    <section ref={sectionRef} id="testimonials" className="relative py-12 bg-white">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full blur-3xl bg-emerald-200/35" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full blur-3xl bg-cyan-200/30" />
