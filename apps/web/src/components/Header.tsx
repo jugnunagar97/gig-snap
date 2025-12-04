@@ -4,280 +4,200 @@ import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
 import { useOrderModal } from "@/components/OrderModalContext";
 import { useAuth } from "@/components/AuthContext";
+import { 
+  ArrowRight, 
+  ChevronDown, 
+  Menu, 
+  User, 
+  Briefcase, 
+  FileText, 
+  Megaphone, 
+  ShoppingBag, 
+  BarChart, 
+  CheckCircle2 
+} from "lucide-react";
 
-const brandFont = Playfair_Display({ subsets: ["latin"], weight: ["700","800"] });
+const brandFont = Playfair_Display({ subsets: ["latin"], weight: ["700", "800"] });
 
 export default function Header() {
   const { open } = useOrderModal();
   const { isAuthenticated, isReady } = useAuth();
-  return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100/50 shadow-sm">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <Link href="/" className="flex items-center space-x-2 sm:space-x-3 group">
-              <Image src="/tp-logo.png" alt="Task Partner" width={60} height={60} className="object-contain sm:w-[85px] sm:h-[85px]" priority />
-              <span className={`${brandFont.className} text-lg sm:text-xl md:text-2xl font-extrabold leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 group-hover:from-emerald-600 group-hover:via-emerald-600 group-hover:to-teal-600 transition-[background] duration-300 [text-rendering:optimizeLegibility] antialiased drop-shadow-sm`}>
-                Task Partner
-              </span>
-          </Link>
-          </div>
 
-          {/* Navigation */}
-          <nav className="hidden lg:flex items-center space-x-10">
-            {/* Services Dropdown */}
-            <div className="group relative">
-              <button className="flex items-center space-x-2 text-gray-700 hover:text-emerald-600 font-medium text-sm tracking-wide transition-colors duration-300 py-2">
-                <span>Services</span>
-                <svg className="w-4 h-4 transition-transform group-hover:rotate-180 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+  return (
+    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl transition-all duration-300 border-b border-zinc-100/50">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        <div className="flex items-center justify-between h-24">
+          
+          {/* 1. Logo (Far Left) */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 md:w-12 md:h-12">
+               <Image 
+                 src="/tp-logo.png" 
+                 alt="Task Partner" 
+                 fill
+                 className="object-contain transition-transform duration-500 group-hover:rotate-12" 
+                 priority 
+               />
+            </div>
+            <span className={`${brandFont.className} text-xl md:text-2xl font-bold text-zinc-900 tracking-tight group-hover:text-emerald-700 transition-colors`}>
+              Task Partner
+            </span>
+          </Link>
+
+          {/* 2. Navigation (Centered & Floating) */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-12">
+            <Link href="/" className="text-sm font-semibold text-zinc-900 hover:text-emerald-600 transition-colors">
+              Home
+            </Link>
+
+            {/* Services Dropdown - FIXED: Includes ALL sub-services */}
+            <div className="group relative h-full flex items-center">
+              <button className="flex items-center gap-1 text-sm font-semibold text-zinc-600 hover:text-emerald-600 transition-colors py-4">
+                Services
+                <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
               
-              {/* Dropdown Menu with hover bridge */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-0 w-[600px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
-                {/* Invisible bridge to prevent gap */}
-                <div className="h-2 w-full"></div>
-                <div className="bg-white rounded-xl shadow-xl border border-gray-100/80 backdrop-blur-sm">
-                <div className="p-6">
-                  <div className="grid grid-cols-2 gap-6">
-                    {/* Left Column */}
-                    <div className="space-y-5">
-                      {/* Administrative & Executive Support */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                          <div className="w-7 h-7 bg-emerald-100 rounded-md flex items-center justify-center mr-3">
-                            <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                          </div>
-                          <span className="text-base">Administrative Support</span>
-                        </h3>
-                        <div className="space-y-2">
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Email & Calendar</span>
+              {/* Premium Glass Dropdown */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform group-hover:translate-y-0 translate-y-2">
+                <div className="w-[700px] bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-zinc-100 overflow-hidden ring-1 ring-zinc-900/5">
+                   
+                   {/* 2-Column Grid for Services */}
+                   <div className="grid grid-cols-2 gap-8 p-8">
+                      
+                      {/* Left Column */}
+                      <div className="space-y-8">
+                        {/* Admin Support */}
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                              <FileText className="w-4 h-4" />
                             </div>
+                            <h3 className="font-bold text-zinc-900 text-sm">Administrative Support</h3>
                           </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Data & File Management</span>
+                          <ul className="space-y-2 pl-11">
+                            {["Email & Calendar", "Data & File Management", "Transcription & Typing"].map(item => (
+                              <li key={item} className="text-sm text-zinc-500 hover:text-emerald-600 cursor-pointer flex items-center gap-2 group/item transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/item:bg-emerald-400 transition-colors" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Digital Marketing */}
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                              <Megaphone className="w-4 h-4" />
                             </div>
+                            <h3 className="font-bold text-zinc-900 text-sm">Digital Marketing</h3>
                           </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Transcription & Typing</span>
-                            </div>
-                          </div>
+                          <ul className="space-y-2 pl-11">
+                            {["Social Media Support", "Content & SEO", "Email Marketing"].map(item => (
+                              <li key={item} className="text-sm text-zinc-500 hover:text-emerald-600 cursor-pointer flex items-center gap-2 group/item transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/item:bg-emerald-400 transition-colors" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
 
-                      {/* Digital Marketing & Social Media */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                          <div className="w-7 h-7 bg-emerald-100 rounded-md flex items-center justify-center mr-3">
-                            <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m-9 0h10m-10 0a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2M9 8h6m-6 4h6m-6 4h6" />
-                            </svg>
-                          </div>
-                          <span className="text-base">Digital Marketing</span>
-                        </h3>
-                        <div className="space-y-2">
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Social Media Support</span>
+                      {/* Right Column */}
+                      <div className="space-y-8">
+                        {/* E-commerce */}
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                              <ShoppingBag className="w-4 h-4" />
                             </div>
+                            <h3 className="font-bold text-zinc-900 text-sm">E-commerce Support</h3>
                           </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Content & SEO</span>
-                            </div>
-                          </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Email Marketing</span>
-                            </div>
-                          </div>
+                          <ul className="space-y-2 pl-11">
+                            {["Product & Inventory", "Customer Service"].map(item => (
+                              <li key={item} className="text-sm text-zinc-500 hover:text-emerald-600 cursor-pointer flex items-center gap-2 group/item transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/item:bg-emerald-400 transition-colors" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                      </div>
-                    </div>
 
-                    {/* Right Column */}
-                    <div className="space-y-5">
-                      {/* E-commerce & Online Store Assistance */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                          <div className="w-7 h-7 bg-emerald-100 rounded-md flex items-center justify-center mr-3">
-                            <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                            </svg>
-                          </div>
-                          <span className="text-base">E-commerce Support</span>
-                        </h3>
-                        <div className="space-y-2">
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Product & Inventory</span>
+                        {/* Research */}
+                        <div>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                              <BarChart className="w-4 h-4" />
                             </div>
+                            <h3 className="font-bold text-zinc-900 text-sm">Research & Analysis</h3>
                           </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Customer Service</span>
-                            </div>
-                          </div>
+                          <ul className="space-y-2 pl-11">
+                            {["Market Research", "Specialized Research"].map(item => (
+                              <li key={item} className="text-sm text-zinc-500 hover:text-emerald-600 cursor-pointer flex items-center gap-2 group/item transition-colors">
+                                <span className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover/item:bg-emerald-400 transition-colors" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
 
-                      {/* Research & Analysis */}
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                          <div className="w-7 h-7 bg-emerald-100 rounded-md flex items-center justify-center mr-3">
-                            <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                          </div>
-                          <span className="text-base">Research & Analysis</span>
-                        </h3>
-                        <div className="space-y-2">
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Market Research</span>
-                            </div>
-                          </div>
-                          <div className="group/item">
-                            <div className="flex items-center text-gray-600 hover:text-emerald-600 transition-colors duration-200 py-2 px-3 rounded-md hover:bg-emerald-50/50">
-                              <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
-                              <span className="text-sm font-medium">Specialized Research</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                   </div>
 
-                  {/* Call to Action Section */}
-                  <div className="mt-6 pt-4 border-t border-gray-100">
-                    <div className="bg-gradient-to-r from-emerald-50/80 to-teal-50/80 rounded-lg p-5">
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <h4 className="text-base font-semibold text-gray-900 mb-1">Ready to get started?</h4>
-                          <p className="text-gray-600 text-sm">Let our virtual professionals handle your tasks.</p>
-                        </div>
-                        <div className="ml-4">
-                          <button onClick={() => open()} className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-md hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-sm hover:shadow-md text-sm">
-                            Get Started
-                          </button>
-                        </div>
+                   {/* Footer CTA */}
+                   <div className="bg-zinc-50 p-6 flex justify-between items-center border-t border-zinc-100">
+                      <div>
+                        <div className="text-sm font-bold text-zinc-900">Ready to delegate?</div>
+                        <div className="text-xs text-zinc-500">Get matched with a pro in minutes.</div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </div>
-        </div>
-            
-            {/* About Us Dropdown */}
-          <div className="group relative">
-              <button className="flex items-center space-x-2 text-gray-700 hover:text-emerald-600 font-medium text-sm tracking-wide transition-colors duration-300 py-2">
-                <span>About Us</span>
-                <svg className="w-4 h-4 transition-transform group-hover:rotate-180 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-              {/* Dropdown Menu */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-[520px] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
-                <div className="p-6 grid sm:grid-cols-2 gap-3">
-                  <a href="#about-company" className="flex items-start gap-3 rounded-xl p-3 hover:bg-emerald-50/50 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10l9-7 9 7v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-9z"/></svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">The Company</div>
-                      <div className="text-xs text-gray-600">Our mission, values and story</div>
-                    </div>
-                  </a>
-                  <a href="#contact" className="flex items-start gap-3 rounded-xl p-3 hover:bg-emerald-50/50 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1111.21 3H12v9h9v.79z"/></svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Contact Us</div>
-                      <div className="text-xs text-gray-600">Talk to our team</div>
-                    </div>
-                  </a>
-                  <a href="#our-team" className="flex items-start gap-3 rounded-xl p-3 hover:bg-emerald-50/50 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5V10H2v10h5m5-6l5-4v10"/></svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Our Team</div>
-                      <div className="text-xs text-gray-600">Meet the people behind GigSnap</div>
-                    </div>
-                  </a>
-                  <a href="#blog" className="flex items-start gap-3 rounded-xl p-3 hover:bg-emerald-50/50 transition-colors">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h10"/></svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Blog</div>
-                      <div className="text-xs text-gray-600">Guides and updates</div>
-                    </div>
-                  </a>
+                      <button 
+                        onClick={() => open()} 
+                        className="px-5 py-2 bg-zinc-900 text-white text-xs font-bold rounded-lg hover:bg-emerald-600 transition-colors"
+                      >
+                        Get Started
+                      </button>
+                   </div>
                 </div>
               </div>
             </div>
+
+            <Link href="#how-it-works" className="text-sm font-semibold text-zinc-600 hover:text-emerald-600 transition-colors">
+              How it Works
+            </Link>
             
-            <Link 
-              href="#how-it-works" 
-              className="text-gray-700 hover:text-emerald-600 font-medium text-sm tracking-wide transition-colors duration-300 py-2"
-            >
-              How It Works
-              </Link>
+            <Link href="#about" className="text-sm font-semibold text-zinc-600 hover:text-emerald-600 transition-colors">
+              About
+            </Link>
+
+            <Link href="#contact" className="text-sm font-semibold text-zinc-600 hover:text-emerald-600 transition-colors">
+              Contact
+            </Link>
           </nav>
 
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            {isReady && !isAuthenticated && (
-              <Link
-                href="/auth/login"
-                className="hidden sm:block px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-gray-700 rounded-lg border border-gray-200 bg-white hover:text-emerald-600 hover:border-emerald-200 hover:bg-emerald-50/40 transition-colors duration-200 shadow-sm"
-              >
-                Log In
+          {/* 3. Action Area (Far Right) */}
+          <div className="flex items-center gap-4">
+             {isReady && !isAuthenticated && (
+              <Link href="/auth/login" className="hidden sm:flex items-center gap-2 text-sm font-semibold text-zinc-900 hover:text-emerald-600 transition-colors">
+                <User className="w-4 h-4" />
+                <span>Log In</span>
               </Link>
             )}
-            <button
-              onClick={open}
-              className="group inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md hover:from-emerald-600 hover:to-teal-600 hover:shadow-lg transition-all duration-200 touch-manipulation"
-            >
-              <span className="hidden xs:inline">Post Gig</span>
-              <span className="xs:hidden">Post</span>
-              <svg className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14" />
-                <path d="M13 5l7 7-7 7" />
-              </svg>
-            </button>
-            </div>
 
-          {/* Mobile menu button */}
-          <button className="lg:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-emerald-600 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            <button 
+              onClick={() => open()}
+              className="hidden sm:flex items-center gap-2 bg-zinc-900 hover:bg-emerald-600 text-white text-sm font-bold px-6 py-3 rounded-full transition-all hover:shadow-lg hover:shadow-emerald-500/20 active:scale-95"
+            >
+              <Briefcase className="w-4 h-4" />
+              <span>Post a Gig</span>
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button className="lg:hidden p-2 text-zinc-900 hover:bg-zinc-100 rounded-full transition-colors">
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </div>
     </header>
   );
 }
-
-
